@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="pcrespoT5.Views.vPersona"
+             Title="vPersona">
+    <VerticalStackLayout
+        Padding="15"
+        Spacing="15">
+        <Label
+            Text="Semana 5: BASES DE DATOS LOCALES"
+            FontSize="20"
+            VerticalOptions="Center"
+            HorizontalOptions="Center" />
+        <Entry x:Name="txtName"
+               Placeholder="Ingresa el nombre" />
+        <Grid Padding="5" RowSpacing="5" ColumnSpacing="5">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnAgregar"
+                    Text="Agregar persona"
+                    Clicked="btnAgregar_Clicked"
+                    Grid.Row="0"
+                    Grid.Column="0" />
+            <Label x:Name="lblStatusMesage"
+                   TextColor="Red"
+                   Grid.Row="1"
+                   Grid.Column="0" />
+            <Button x:Name="btnMostrar"
+                    Text="Mostrar persona"
+                    Clicked="btnMostrar_Clicked"
+                    Grid.Row="2"
+                    Grid.Column="0" />
+            <CollectionView x:Name="listarPersonas"
+                            Grid.Row="3"
+                            Grid.Column="0">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BackgroundColor="#2E2E2E"
+                                StrokeThickness="0"
+                                Padding="12"
+                                Margin="5"
+                                StrokeShape="RoundRectangle 8">
+
+                            <Grid ColumnDefinitions="45,*,55,55"
+                                  ColumnSpacing="8">
+
+                                <!-- ID -->
+                                <Label Grid.Column="0"
+                                       Text="{Binding Id}"
+                                       TextColor="White"
+                                       VerticalOptions="Center" />
+
+                                <!-- Nombre -->
+                                <Label Grid.Column="1"
+                                       Text="{Binding Name}"
+                                       TextColor="White"
+                                       VerticalOptions="Center" />
+
+                                <!-- Editar -->
+                                <Button Grid.Column="2"
+                                        Text="✎"
+                                        FontSize="20"
+                                        BackgroundColor="#2563EB"
+                                        TextColor="White"
+                                        CornerRadius="8"
+                                        CommandParameter="{Binding .}"
+                                        Clicked="btnEditar_Clicked" />
+
+                                <!-- Eliminar -->
+                                <Button Grid.Column="3"
+                                        Text="✕"
+                                        FontSize="20"
+                                        BackgroundColor="#DC2626"
+                                        TextColor="White"
+                                        CornerRadius="8"
+                                        CommandParameter="{Binding .}"
+                                        Clicked="btnEliminar_Clicked" />
+
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+        </Grid>
+
+    </VerticalStackLayout>
+</ContentPage>
